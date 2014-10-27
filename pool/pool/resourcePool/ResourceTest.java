@@ -1,13 +1,11 @@
 package pool.resourcePool;
 
 import java.util.NoSuchElementException;
-import org.junit.Test;
-import junit.framework.TestCase;
 import pool.Resource;
 
-public class ResourceTest extends TestCase{
+public class ResourceTest {
 
-	@Test(expected = NoSuchElementException.class)
+	@org.junit.Test(expected = NoSuchElementException.class)
 	
 	public void cannotTakeResourceFromEmptyPool(){
 		
@@ -16,7 +14,7 @@ public class ResourceTest extends TestCase{
 		
 	}
 	
-	@Test(expected=NoSuchElementException.class)
+	@org.junit.Test(expected=NoSuchElementException.class)
 	
 	public void cannotTakeResourceFromPoolWithNoFreeResource(){
 		
@@ -26,13 +24,13 @@ public class ResourceTest extends TestCase{
 			pool.provideResource();
 		}
 		catch(NoSuchElementException e){
-			fail("there should be at least one free resource");
+			System.out.println("there should be at least one free resource");
 		}
 		pool.provideResource();	
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
-	
+	@org.junit.Test( expected = IllegalArgumentException.class)
+
 	public void cannotFreeNonExistingResource(){
 		
 		ResourcePool<Resource> pool = ResourcePool.createPool(1);

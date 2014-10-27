@@ -17,10 +17,10 @@ public class ForeseeableAction extends Action{
 		this.remainTime=tot;
 		
 	}
-	//??
+
 	public ForeseeableAction(){
-		this.totalTme=10;
-		this.remainTime=10;
+		this.totalTme=1;
+		this.remainTime=1;
 	}
 	
 	public boolean is_ready(){
@@ -35,7 +35,7 @@ public class ForeseeableAction extends Action{
 		this.remainTime--;
 		
 	}
-	//??
+
 	public Action createAction()  {
 				
 			return new ForeseeableAction();
