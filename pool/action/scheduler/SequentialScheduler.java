@@ -17,8 +17,7 @@ public class SequentialScheduler extends Scheduler {
 			this.currentAction().really_doStep();
 		else  
 			this.nextAction();
-			
-		
+					
 	}
 	
 	@Override

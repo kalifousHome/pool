@@ -15,5 +15,8 @@ public class FreeResourceAction<R extends Resource> extends ResourcePoolAction<R
 		this.user.resetResource();
 		
 	}
-
+	@Override
+	public void doStep() {
+		this.really_doStep();
+	}
 }

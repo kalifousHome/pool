@@ -17,6 +17,7 @@ public class Swimmer extends Action{
 	private final SequentialScheduler process;
 	private final ResourcefulUser<Resource> basketUser;
 	private final ResourcefulUser<Resource> cubicleUser;
+	/*Servira pour l'initialisation de la classe Swimmer */
 	private String name;
 	
 	

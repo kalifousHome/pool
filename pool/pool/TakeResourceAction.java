@@ -18,7 +18,7 @@ public class TakeResourceAction<R extends Resource> extends ResourcePoolAction<R
 	}
 	@Override
 	public void doStep() {
-		
+		this.really_doStep();
 	}
 	
 }

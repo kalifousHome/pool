@@ -31,8 +31,8 @@ public class ResourcePoolAction<R extends Resource> extends Action{
 		}
 		@Override
 		public void really_doStep() {
-			// TODO Auto-generated method stub
-			
+			this.is_ready=false;
+			this.is_finished=true;
 		}
 		@Override
 		protected Action createAction() {
