@@ -11,9 +11,9 @@ public class ResourcePoolAction<R extends Resource> extends Action{
 		protected boolean is_ready;
 		protected boolean is_finished;
 		
-		public ResourcePoolAction(ResourcePool<R> pool, ResourcefulUser<R> user){
+		public ResourcePoolAction(ResourcePool<R> resourcePool, ResourcefulUser<R> user){
 		
-			this.pool= pool;
+			this.pool= resourcePool;
 			this.user= user;
 			is_ready=true;
 			is_finished=false;			
@@ -39,4 +39,4 @@ public class ResourcePoolAction<R extends Resource> extends Action{
 			// TODO Auto-generated method stub
 			return null;
 		}
-		}
+	}

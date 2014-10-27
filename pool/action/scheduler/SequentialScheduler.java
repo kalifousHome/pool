@@ -28,8 +28,8 @@ public class SequentialScheduler extends Scheduler {
 	}
 
 	@Override
-	public void addAction(Action Action) {
-		
+	public void addAction(Action action) {
+		this.actions.add(action);		
 		
 	}
 	

@@ -41,7 +41,7 @@ public abstract class ResourcePool<R extends Resource>{
 		available.add(resource);
 		
 	}
-	private boolean hasAvailableResource() {
+	public boolean hasAvailableResource() {
 		return !available.isEmpty();
 	}
 	public abstract R createResource();	

@@ -11,8 +11,7 @@ public abstract class Action {
 	}
 		
 
-	@SuppressWarnings("unused")
-	private void doStep() {
+	protected void doStep() {
 				really_doStep();
 		
 	}

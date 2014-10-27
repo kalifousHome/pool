@@ -4,6 +4,7 @@ import pool.Basket;
 import pool.Cubicle;
 import pool.ForeseeableAction;
 import pool.FreeResourceAction;
+import pool.Resource;
 import pool.ResourcefulUser;
 import pool.TakeResourceAction;
 import pool.resourcePool.BasketPool;
@@ -13,24 +14,29 @@ import action.scheduler.SequentialScheduler;
 
 public class Swimmer extends Action{
 	
-	protected final SequentialScheduler process;
-	protected final ResourcefulUser<Basket> basketUser;
-	protected final ResourcefulUser<Cubicle> cubicleUser;
+	private final SequentialScheduler process;
+	private final ResourcefulUser<Resource> basketUser;
+	private final ResourcefulUser<Resource> cubicleUser;
+	private String name;
+	
 	
 	public Swimmer(String name, BasketPool<Basket> bp, CubiclePool<Cubicle> cbl, int timeToUndress,
-			int timeToSwim, int timeToDress){
+			int timeToSwim, int timeToDress) throws Exception{
+				
+		this.name=name;
 	
-		basketUser = new ResourcefulUser<Basket>();
-		cubicleUser = new ResourcefulUser<Cubicle>();
+		basketUser = new ResourcefulUser<Resource>();
+		cubicleUser = new ResourcefulUser<Resource>();
+		/*Pourquoi faire?? */
 		process = new SequentialScheduler(0);
 		
-		Process.addAction ( new TakeResourceAction(bp,basketUser) );
-		Process.addAction ( new TakeResourceAction( cbl,cubicleUser) );
-		Process.addAction ( new ForeseeableAction(timeToUndress) );
-		Process.addAction ( new ForeseeableAction(timeToSwim) );
-		Process.addAction ( new ForeseeableAction(timeToDress) );
-		Process.addAction ( new FreeResourceAction(bp,basketUser) );
-		Process.addAction ( new FreeResourceAction(cbl,cubicleUser) );
+		process.addAction ( new TakeResourceAction<Basket>(bp,basketUser) );
+		process.addAction ( new TakeResourceAction<Cubicle>( cbl,cubicleUser) );
+		process.addAction ( new ForeseeableAction(timeToUndress) );
+		process.addAction ( new ForeseeableAction(timeToSwim) );
+		process.addAction ( new ForeseeableAction(timeToDress) );
+		process.addAction ( new FreeResourceAction<Basket>(bp,basketUser) );
+		process.addAction ( new FreeResourceAction<Cubicle>(cbl,cubicleUser) );
 	
 	}
 	@Override

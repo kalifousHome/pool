@@ -2,21 +2,22 @@ package pool;
 
 import pool.resourcePool.ResourcePool;
 
-public abstract class TakeResourceAction<R extends Resource> extends ResourcePoolAction<Resource>  {
+public class TakeResourceAction<R extends Resource> extends ResourcePoolAction<Resource>  {
 	
-	public ResourcefulUser<Resource> handler;
-
 	public TakeResourceAction( ResourcePool<Resource> resourcePool ,ResourcefulUser<Resource> user){
-				super(resourcePool,user);
+			
+			super(resourcePool,user);
+			if(this.pool.hasAvailableResource())
+					this.addResource(this.pool.provideResource());
 	}
 	
-	public void addResource(Resource R){
+	public void addResource(Resource resource){
 		this.doStep();
-		handler.setResource(R);
+		this.user.setResource(resource);
 		
 	}
-
-	private void doStep() {
+	@Override
+	public void doStep() {
 		
 	}
 	
